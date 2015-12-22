@@ -74,6 +74,4 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Intent intent = new Intent(this,RegisterActivity.class);
         startActivity(intent);
     }
-
-
 }

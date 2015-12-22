@@ -3,6 +3,7 @@ package com.example.toshiba.login;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.toshiba.request.RequestActivity;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -29,7 +30,7 @@ public class LoginInteractorImpl extends AppCompatActivity implements LoginInter
 
             @Override
             public void onAuthenticated(AuthData authData) {
-                Intent intent = new Intent(this, DestinoActivity.class);
+                Intent intent = new Intent(LoginInteractorImpl.this, RequestActivity.class);
                 intent.putExtra("Uid", authData.getUid());
                 startActivity(intent);
 
