@@ -7,10 +7,10 @@ import com.firebase.client.FirebaseError;
  */
 public interface LoginView {
 
-    public void loadingVisible();
-    public void loadingInvisible();
-    public void showUsernameError();
-    public void showPasswordError();
-    public void showServerError(FirebaseError firebaseError);
-
+    void loadingVisible();
+    void loadingInvisible();
+    void showUsernameError();
+    void showPasswordError();
+    void showServerError(FirebaseError firebaseError);
+    void moveToRequest(String uid);
 }

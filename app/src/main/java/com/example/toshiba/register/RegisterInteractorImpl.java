@@ -1,9 +1,7 @@
 package com.example.toshiba.register;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.toshiba.login.LoginActivity;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
@@ -16,9 +14,9 @@ public class RegisterInteractorImpl extends AppCompatActivity implements Registe
     @Override
     public void register(String username, String password, String repassword, final RegisterPresenterImpl registerPresenter) {
 
-        Firebase.setAndroidContext(LoginActivity.getContext());
+        Firebase.setAndroidContext(this);
 
-        Firebase firebase = new Firebase("https://brilliant-heat-7882.firebaseio.com/");
+        Firebase firebase = new Firebase("https://passenger.firebaseio.com");
 
         if (username.equals("")) {
             registerPresenter.onUsernameError();
@@ -39,8 +37,7 @@ public class RegisterInteractorImpl extends AppCompatActivity implements Registe
 
             @Override
             public void onSuccess(Map<String, Object> stringObjectMap) {
-                Intent intent = new Intent(RegisterInteractorImpl.this, LoginActivity.class);
-                startActivity(intent);
+                registerPresenter.moveToLogin();
             }
 
             @Override

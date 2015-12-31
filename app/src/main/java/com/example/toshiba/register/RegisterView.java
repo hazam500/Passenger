@@ -14,5 +14,5 @@ public interface RegisterView {
     public void showRepeatPasswordErrorVoid();
     public void showRepeatPasswordErrorDiffer();
     public void showServerError(FirebaseError firebaseError);
-
+    void moveToLogin();
 }

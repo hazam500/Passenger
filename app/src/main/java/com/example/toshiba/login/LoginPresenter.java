@@ -7,9 +7,9 @@ import com.firebase.client.FirebaseError;
  */
 public interface LoginPresenter {
 
-    public void loginUser(String username,String password);
-    public void onUsernameError();
-    public void onPasswordError();
-    public void onServerError(FirebaseError firebaseError);
-
+    void loginUser(String username,String password);
+    void onUsernameError();
+    void onPasswordError();
+    void onServerError(FirebaseError firebaseError);
+    void moveToRequest(String uid);
 }

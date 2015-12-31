@@ -1,9 +1,7 @@
 package com.example.toshiba.login;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.toshiba.request.RequestActivity;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -15,9 +13,7 @@ public class LoginInteractorImpl extends AppCompatActivity implements LoginInter
     @Override
     public void login(String username, String password, final LoginPresenterImpl loginPresenterImpl) {
 
-        Firebase.setAndroidContext(LoginActivity.getContext());
-
-        final Firebase firebase = new Firebase("https://brilliant-heat-7882.firebaseio.com/");
+        Firebase firebase = new Firebase("https://passenger.firebaseio.com/");
 
         if (username.equals("")) {
             loginPresenterImpl.onUsernameError();
@@ -30,10 +26,7 @@ public class LoginInteractorImpl extends AppCompatActivity implements LoginInter
 
             @Override
             public void onAuthenticated(AuthData authData) {
-                Intent intent = new Intent(LoginInteractorImpl.this, RequestActivity.class);
-                intent.putExtra("Uid", authData.getUid());
-                startActivity(intent);
-
+                loginPresenterImpl.moveToRequest(authData.getUid());
             }
 
             @Override

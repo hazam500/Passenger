@@ -51,4 +51,9 @@ public class RegisterPresenterImpl extends AppCompatActivity implements Register
         registerView.loadingInvisible();
         registerView.showServerError(firebaseError);
     }
+
+    @Override
+    public void moveToLogin() {
+        registerView.moveToLogin();
+    }
 }

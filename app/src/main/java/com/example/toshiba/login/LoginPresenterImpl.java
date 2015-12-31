@@ -40,4 +40,9 @@ public class LoginPresenterImpl extends AppCompatActivity implements LoginPresen
         loginView.loadingInvisible();
         loginView.showServerError(firebaseError);
     }
+
+    @Override
+    public void moveToRequest(String uid) {
+        loginView.moveToRequest(uid);
+    }
 }

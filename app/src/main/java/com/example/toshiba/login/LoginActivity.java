@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 
 import com.example.toshiba.passenger.R;
 import com.example.toshiba.register.RegisterActivity;
+import com.example.toshiba.origin.OriginActivity;
+import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
@@ -22,14 +24,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private LoginPresenterImpl presenter;
     private static Context context;
 
-    public static Context getContext() {
-        return context;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Firebase.setAndroidContext(this);
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
@@ -66,12 +67,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Snackbar.make(login, "Problema del servidor, no autenticado", Snackbar.LENGTH_SHORT).show();
     }
 
-    public void login() {
+    @Override
+    public void moveToRequest(String uid) {
+        Intent intent = new Intent(this, OriginActivity.class);
+        intent.putExtra("Uid", uid);
+        startActivity(intent);
+    }
+
+    public void login(View view) {
         presenter.loginUser(username.getText().toString(), password.getText().toString());
     }
 
-    public void register() {
+    public void register(View view) {
         Intent intent = new Intent(this,RegisterActivity.class);
         startActivity(intent);
     }
-}
+
+
+ }
