@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.os.ResultReceiver;
+import android.util.Log;
 
 import com.example.toshiba.retrofit.Classes.AddressResults;
 import com.example.toshiba.retrofit.Classes.Result;
@@ -47,6 +48,8 @@ public class RetrofitOriginIS extends IntentService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            Log.v("MENSAJEEEEE","LLAMADO AL SERVIDOR GEOCODER");
             Result[] results = response.body().getResults();
             String address = results[0].getFormattedAddress();
 

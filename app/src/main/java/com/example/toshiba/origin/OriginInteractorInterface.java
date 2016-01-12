@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Location;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 
 
 /**
@@ -12,21 +13,33 @@ import com.google.android.gms.maps.model.LatLng;
 public interface OriginInteractorInterface {
     public void requestLocationUpdates(Context context, OriginPresenter originPresenter);
 
-    void searchDestination(String address, OriginPresenter originPresenter, Context myContext, String key);
+    void checkIfRequestedService(String address, OriginPresenter originPresenter, Context myContext, String key);
 
-    void showOriginAddress(String address, Location currentLocation);
+    void originAddress(String address, Location currentLocation);
 
     void requestRide();
 
-    void identifyOriginSector(Location originLocation);
+    void showDestinationLocation(LatLng location);
 
-    void showDestinationLocation(LatLng destinationLocation);
-
-    void identifyDestinationSector(LatLng destinationLocation);
-
-    void initFirebase();
+    void identifyDestinationSector(LatLng location);
 
     void updateServerLocation(Location location);
 
     void showMessage(String message);
+
+    void getDestinationLocation(String address, Context myContext, String key);
+
+    void findDestinationStops();
+
+    void findDestinationSectors(Marker stopList);
+
+    void findOriginStops();
+
+    void getOriginLocation();
+
+    void startDestinationAddressService(LatLng position);
+
+    void startOriginAddressService(LatLng position);
+
+    void selectedOriginStop(String title);
 }

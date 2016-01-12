@@ -44,6 +44,15 @@
         android:onClick="searchDestination"
         android:text="Localizar Destino"
         android:textSize="20dp"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/searchOriginStops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="getOriginLocation"
+        android:text="Localizar paradas de origen"
+        android:textSize="20dp"
         android:visibility="gone"/>
 
     <Button
@@ -55,11 +64,19 @@
         android:visibility="gone" />
 
     <Button
+        android:id="@+id/confirmDest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="confirmDestination"
+        android:text="Confirma tu Destino"
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/confirmOrigin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="confirmarOrigen"
-        android:text="Confirma tu ubicación actual"
+        android:onClick="confirmOrigin"
+        android:text="Confirma tu origen"
         android:visibility="gone" />
 
     <TextView
@@ -68,12 +85,11 @@
         android:id="@+id/addressTextView"
         android:visibility="visible"
         android:hint="address"/>
+
     <fragment
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
 
 </LinearLayout>
